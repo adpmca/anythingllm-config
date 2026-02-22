@@ -1,0 +1,10 @@
+# Secrets — never commit
+secrets/
+
+# Environment files
+.env
+.env.dev
+.env.prod
+
+# Backup archives
+backups/

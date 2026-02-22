@@ -1,0 +1,26 @@
+# copilot-api.service — systemd user service template (reference only)
+#
+# The actual service file is generated at ~/.config/systemd/user/copilot-api.service
+# by scripts/setup-copilot-api.sh, which fills in the correct Node.js/npx path.
+#
+# To manage manually after setup:
+#   systemctl --user status copilot-api
+#   systemctl --user restart copilot-api
+#   systemctl --user stop copilot-api
+#   journalctl --user -u copilot-api -f
+
+[Unit]
+Description=Copilot API - OpenAI-compatible LLM proxy
+After=network.target
+
+[Service]
+ExecStart=/home/ajay/.nvm/versions/node/<lts-version>/bin/npx copilot-api@latest start
+Restart=on-failure
+RestartSec=10
+Environment=HOME=/home/ajay
+Environment=PATH=/home/ajay/.nvm/versions/node/<lts-version>/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
