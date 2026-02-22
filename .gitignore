@@ -1,0 +1,6 @@
+# Actual environment file with secrets — never commit this
+.env
+
+# Collector hot-directory and output folders
+hotdir/
+outputs/
